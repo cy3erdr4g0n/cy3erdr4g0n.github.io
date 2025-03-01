@@ -1,0 +1,11 @@
+theme: jekyll-theme-hacker
+title: C0MM4ND_N0T_F0UND@root:~#
+description: profile and blog ... Hacking....
+show_downloads: false
+show_repo: false
+
+gems:
+- jekyll-sitemap
+
+whitelist:
+- jekyll-sitemap
