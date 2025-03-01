@@ -23,12 +23,11 @@ href="https://cy3erdr4g0n.github.io/Post/PwnTillDawn/index.html">PwnTillDawn</a>
 <br>
 <img style="padding-right: 30px;" align="left"  width="500" height="300" src="">
 <br>
-<p><strong>Name :</strong> <a href="#">Akintola JOhn</a></p>
-<!-- <p><strong>Known as :</strong> <a href="#">Hassans_Sec</a></p> -->
+<p><strong>Name :</strong> <a href="#">Akintola John</a></p>
 <p><strong>What Do I Do :</strong> <a href="#">CTF / Red Teaming / Penetration testing</a></p>
 <p><strong>GitHub :</strong> <a href="https://github.com/cy3erdr4g0n">github.com/cy3erdr4g0n</a></p>
-<p><strong>Linkedin :</strong> <a href="https://www.linkedin.com/in//">linkedin.com/</a></p>
-<p><strong>Twitter :</strong> <a href="https://twitter.com/respectgraceman">twitter.com/respectgraceman</a></p>
+<p><strong>Linkedin :</strong> <a href="https://www.linkedin.com/in/akintola-john-1801a0238">linkedin.com/</a></p>
+<p><strong>Twitter :</strong> <a href="https://twitter.com/respectgraceman">twitter.com/respectgraceman</a></p>38
 <br clear="left">
 <br clear="left">
 
