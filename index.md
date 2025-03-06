@@ -27,7 +27,7 @@ href="https://cy3erdr4g0n.github.io/Post/PwnTillDawn/index.html">PwnTillDawn</a>
 <p><strong>What Do I Do :</strong> <a href="#">CTF / Red Teaming / Penetration testing</a></p>
 <p><strong>GitHub :</strong> <a href="https://github.com/cy3erdr4g0n">github.com/cy3erdr4g0n</a></p>
 <p><strong>Linkedin :</strong> <a href="https://www.linkedin.com/in/akintola-john-1801a0238">linkedin.com/in/akintola-john-1801a0238</a></p>
-<p><strong>Twitter :</strong> <a href="https://twitter.com/respectgraceman">twitter.com/respectgraceman</a></p>
+<p><strong>Twitter :</strong> <a href="https://twitter.com/respectgraceman" >twitter.com/respectgraceman</a></p>
 <br clear="left">
 <br clear="left">
 
