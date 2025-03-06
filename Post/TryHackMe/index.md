@@ -17,5 +17,7 @@ _TryHackMe is a browser-based cyber security training platform, with learning co
 <hr>
 <hr>
 
-- [[2025]] [TryHackMe -- lightroom](https://cy3erdr4g0n.github.io/TryHackMe/lightroom.html) `Sqli`
--
+- [[2024]] [TryHackMe -- lightroom](https://cy3erdr4g0n.github.io/TryHackMe/lightroom.html) `Sqli`
+- [[2024]] [TryHackMe -- Mr-Robot-CTF](https://cy3erdr4g0n.github.io/TryHackMe/lightroom.html) `Linux,SUID,bruteforce`
+
+
