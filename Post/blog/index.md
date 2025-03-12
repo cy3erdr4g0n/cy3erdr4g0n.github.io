@@ -18,4 +18,4 @@ href="https://cy3erdr4g0n.github.io/Post/blog/index.html">Blog</a>&#xA0;&#xA0;&#
 <hr>
 <hr>
 
-- [[2025]] [Blog -- APIs and URLs: A Unified Understanding](https://cy3erdr4g0n.github.io/Post/blog/APIs_and_URLs:A_Unified_Understanding.html) `APIs and URLs: A Unified Understanding`
+- [[2025]] [Blog -- APIs and URLs: A Unified Understanding](https://cy3erdr4g0n.github.io/Post/blog/APIs_and_URLs_A_Unified_Understanding.html) `APIs and URLs: A Unified Understanding`
