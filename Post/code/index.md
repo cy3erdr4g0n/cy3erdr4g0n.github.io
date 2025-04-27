@@ -14,7 +14,7 @@ href="https://cy3erdr4g0n.github.io/Post/blog/index.html">Blog</a>&#xA0;&#xA0;&#
 
 
 * * *
-<h4 class="mume-header" id="Blog">Blog:</h4>
+<h4 class="mume-header" id="Code">Code:</h4>
 
 <hr>
 <hr>
