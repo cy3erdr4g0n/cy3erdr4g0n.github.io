@@ -24,13 +24,10 @@ _TryHackMe is a browser-based cyber security training platform, with learning co
 - [[2024]] [TryHackMe -- pickle-rick](https://cy3erdr4g0n.github.io/Post/TryHackMe/Pickle-Rick.html) `Linux`
 - [[2024]] [TryHackMe -- Mr-Robot-CTF](https://cy3erdr4g0n.github.io/Post/TryHackMe/Mr-Robot-CTF.html) `Linux,SUID,bruteforce`
 - [[2024]] [TryHackMe -- Steel Mountain](https://cy3erdr4g0n.github.io/Post/TryHackMe/Steel-Mountain.html) `Windows`
-
+- [[2024]] [TryHackMe -- LazyAdmin](https://cy3erdr4g0n.github.io/Post/TryHackMe/LazyAdmin.html) `html,fuzz,enumeratio`
 - [[2024]] [TryHackMe -- Kenobi](https://cy3erdr4g0n.github.io/Post/TryHackMe/Kenobi.html) `Linux`
-- [[feb 01 2024]] [TryHackMe -- Net Sec Challenge](https://cy3erdr4g0n.github.io/Post/TryHackMe/Net-Sec-challenge.html) `Linux`
-- [[feb 02 2024]] [TryHackMe -- Vulnerability Capstone](https://cy3erdr4g0n.github.io/Post/TryHackMe/Vulnerability-Capstone.html) `Linux`
-- [[jun 03 2024]] [TryHackMe -- Cold-VVars](https://cy3erdr4g0n.github.io/Post/TryHackMe/Cold-VVars.html) `Linux` `tmux` `vim`
-- [[jun 12 2024]] [TryHackMe -- Crack-the-hash](https://cy3erdr4g0n.github.io/Post/TryHackMe/Crack-the-hash.html) `hash,bash`
-- [[jun 14 2024]] [TryHackMe -- Airplane](https://cy3erdr4g0n.github.io/Post/TryHackMe/Airplane.html) `LFI,SUID,ChatGpt,ssh`
-- [[jun 18 2024]] [TryHackMe -- Attacktive-Directory](https://cy3erdr4g0n.github.io/Post/TryHackMe/Attacktive-Directory.html) `AD,Kerbros,SMB`
-- [[jun 18 2024]] [TryHackMe -- LazyAdmin](https://cy3erdr4g0n.github.io/Post/TryHackMe/LazyAdmin.html) `html,fuzz,enumeratio`
-- [[jun 19 2024]] [TryHackMe -- deathnote](https://cy3erdr4g0n.github.io/Post/TryHackMe/deathnote.html) `Magic-byte,docker,ChatGpt,ssh`
+- [[2024]] [TryHackMe -- Net Sec Challenge](https://cy3erdr4g0n.github.io/Post/TryHackMe/Net-Sec-challenge.html) `Linux`
+- [[2024]] [TryHackMe -- Vulnerability Capstone](https://cy3erdr4g0n.github.io/Post/TryHackMe/Vulnerability-Capstone.html) `Linux`
+- [[2024]] [TryHackMe -- Crack-the-hash](https://cy3erdr4g0n.github.io/Post/TryHackMe/Crack-the-hash.html) `hash,bash`
+- [[2024]] [TryHackMe -- Cold-VVars](https://cy3erdr4g0n.github.io/Post/TryHackMe/Cold-VVars.html) `Linux` `tmux` `vim`
+
