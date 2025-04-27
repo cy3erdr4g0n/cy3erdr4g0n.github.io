@@ -36,3 +36,10 @@ href="https://cy3erdr4g0n.github.io/Post/blog/index.html">Blog</a>&#xA0;&#xA0;&#
 * * *
 ### **TryHackMe Writeups:~#**
 * * *
+
+- [[2024]] [TryHackMe -- lightroom](https://cy3erdr4g0n.github.io/Post/TryHackMe/lightroom.html) `Sqli`
+- [[2024]] [TryHackMe -- Mr-Robot-CTF](https://cy3erdr4g0n.github.io/Post/TryHackMe/Mr-Robot-CTF.html) `Linux,SUID`
+- [[2024]] [TryHackMe -- Wgel-CTF](https://cy3erdr4g0n.github.io/Post/TryHackMe/Wgel-CTF.html) `wget,ssh`
+- [[2024]] [TryHackMe -- pickle-rick](https://cy3erdr4g0n.github.io/Post/TryHackMe/Pickle-Rick.html) `Linux`
+- [[2024]] [TryHackMe -- Mr-Robot-CTF](https://cy3erdr4g0n.github.io/Post/TryHackMe/Mr-Robot-CTF.html) `Linux,SUID,bruteforce`
+- [[2024]] [TryHackMe -- Steel Mountain](https://cy3erdr4g0n.github.io/Post/TryHackMe/Steel-Mountain.html) `Windows`
