@@ -61,7 +61,7 @@ Mindset: Break, Learn, Secure. 🚀
 - [[2024]] [TryHackMe -- Vulnerability Capstone](https://cy3erdr4g0n.github.io/Post/TryHackMe/Vulnerability-Capstone.html) `Linux`
 - [[2024]] [TryHackMe -- Crack-the-hash](https://cy3erdr4g0n.github.io/Post/TryHackMe/Crack-the-hash.html) `hash,bash`
 - [[2024]] [TryHackMe -- Cold-VVars](https://cy3erdr4g0n.github.io/Post/TryHackMe/Cold-VVars.html) `Linux` `tmux` `vim`
-
 - [[2025]] [TryHackMe -- cheesectfv10](https://cy3erdr4g0n.github.io/Post/TryHackMe/cheesectfv10.html) `Linux`
 
 - [[2025]] [TryHackMe -- pyrat ](https://cy3erdr4g0n.github.io/Post/TryHackMe/pyrat.html) `Linux` 
+- [[2025]] [TryHackMe -- cheesectfv10](https://cy3erdr4g0n.github.io/Post/TryHackMe/WhiteroseCTF6.html) `Linux, sudoedit, priv escalation`

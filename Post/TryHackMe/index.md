@@ -35,3 +35,4 @@ _TryHackMe is a browser-based cyber security training platform, with learning co
 
 - [[2025]] [TryHackMe -- cheesectfv10](https://cy3erdr4g0n.github.io/Post/TryHackMe/cheesectfv10.html) `Linux`
 
+- [[2025]] [TryHackMe -- cheesectfv10](https://cy3erdr4g0n.github.io/Post/TryHackMe/WhiteroseCTF6.html) `Linux, sudoedit, priv escalation`
