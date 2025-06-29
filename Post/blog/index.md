@@ -20,3 +20,5 @@ href="https://cy3erdr4g0n.github.io/Post/blog/index.html">Blog</a>&#xA0;&#xA0;&#
 <hr>
 
 - [[2025]] [Blog -- APIs and URLs: A Unified Understanding](https://cy3erdr4g0n.github.io/Post/blog/APIs_and_URLs_A_Unified_Understanding.html) `APIs and URLs: A Unified Understanding`
+- [[2025]] [socket]
+- [[2025]] [Blog -- internet protocol version 6](https://cy3erdr4g0n.github.io/Post/blog/ipv6.html) `IPV6`
