@@ -65,3 +65,4 @@ Mindset: Break, Learn, Secure. 🚀
 - [[2025]] [TryHackMe -- pyrat ](https://cy3erdr4g0n.github.io/Post/TryHackMe/pyrat.html) `Linux` 
 - [[2025]] [TryHackMe -- WhiteroseCTF6](https://cy3erdr4g0n.github.io/Post/TryHackMe/WhiteroseCTF6.html) `Linux, sudoedit, priv escalation`
 - [[2025]] [TryHackMe -- TakeOver---badr](https://cy3erdr4g0n.github.io/Post/TryHackMe/TakeOver---badr.html) `web, enumeration`
+- [[2025]] [TryHackMe -- SilverPlatter3](https://cy3erdr4g0n.github.io/Post/TryHackMe/SilverPlatter3.html) `web, enumeration, sudo`
