@@ -15,3 +15,4 @@ href="https://cy3erdr4g0n.github.io/Post/blog/index.html">Blog</a>&#xA0;&#xA0;&#
 <hr>
 
 - [[2025]] [HackThebox -- Outbound](https://cy3erdr4g0n.github.io/Post/HackTheBox/Outbound.html) `linux, CVE-2025-49113, CVE-2025-27591`
+- [[2025]] [HackThebox -- Outbound](https://cy3erdr4g0n.github.io/Post/HackTheBox/Planning.html) `linux, CVE-2024-9264, CRONJOB`
