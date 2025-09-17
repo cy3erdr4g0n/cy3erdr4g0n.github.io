@@ -1,12 +1,14 @@
 theme: jekyll-theme-chirpy
 
+remote_theme: cotes2020/jekyll-theme-chirpy
+
 title: C0MM4ND_N0T_F0UND@root:~#
 
 description: profile and blog ... Hacking....
 
 lang: en
 
-theme_mode: [light | dark]
+theme_mode: [light | dark | auto]
 
 
 show_downloads: false
@@ -40,20 +42,6 @@ defaults:
     values:
       layout: "post"
       author: "C0MM4ND_N0T_F0UND"
-
-# Exclude from site build
-exclude:
-  - README.md
-  - node_modules
-  - vendor
-
-
-# Feed & SEO (optional plugins — commented out since you didn't whitelist them)
-# To enable these, add the plugin to gems/plugins and whitelist if needed.
-# plugins:
-#   - jekyll-feed
-#   - jekyll-seo-tag
-#   - jekyll-sitemap
 
 
 
