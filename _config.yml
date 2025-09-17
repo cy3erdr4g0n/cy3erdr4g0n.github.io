@@ -1,6 +1,14 @@
-theme: jekyll-theme-hacker
+theme: jekyll-theme-chirpy
+
 title: C0MM4ND_N0T_F0UND@root:~#
+
 description: profile and blog ... Hacking....
+
+lang: en
+
+theme_mode: [light | dark]
+
+
 show_downloads: false
 show_repo: false
 
@@ -46,23 +54,27 @@ exclude:
 #   - jekyll-feed
 #   - jekyll-seo-tag
 #   - jekyll-sitemap
-# whitelist:
-#   - jekyll-feed
-#   - jekyll-seo-tag
-#   - jekyll-sitemap
+
+
 
 
 # Social / author details (used by some layouts or custom includes)
-author:
+social:
   name: "C0MM4ND_N0T_F0UND"
   email: "commandnotfound6@gmail.com"
   bio: "Security tinkerer — posts on pentesting, tooling, and unusual bugs."
+  links:
+    twitter: "https://twitter.com/respectgraceman"
+    github: "https://github.com/cy3erdr4g0n"
+    linkedin: "https://linkedin.com/in/akintola-john-1801a0238"
 
-social:
-  twitter: "https://twitter.com/respectgracema"
-  github: "https://github.com/cy3erdr4g0n"
-  linkedin: "https://linkedin.com/in/akintola-john-1801a0238"
-  mastodon: ""           # optional
+twitter:
+  username: "https://twitter.com/respectgraceman"
+github:
+  username: "https://github.com/cy3erdr4g0n"
+linkedin:
+  username: "https://linkedin.com/in/akintola-john-1801a0238"
+  # optional
 
 # Build settings
 safe: false
