@@ -1,11 +1,86 @@
-theme: minimal-mistakes-jekyll
-title: C0MM4ND_N0T_F0UND@root:~#
-description: profile and blog ... Hacking....
+# theme: minimal-mistakes-jekyll
+# title: C0MM4ND_N0T_F0UND@root:~#
+# description: profile and blog ... Hacking....
+# show_downloads: false
+# show_repo: false
+
+# gems:
+# - jekyll-sitemap
+
+# whitelist:
+# - jekyll-sitemap
+
+
+
+# Site basics
+title: "C0MM4ND_N0T_F0UND@root:~#"
+description: "profile and blog ... Hacking...."
+baseurl: "cy3erdr4g0n.github.io/"       
+url: "https://cy3erdr4g0n.github.io/" 
+
+# Theme
+theme: jekyll-theme-hacker
+
+
+# If using older Jekyll/GitHub Pages, use "gems:" instead of "plugins:" above.
+gems:
+  - jekyll-sitemap
+
+
+# Visual / UX toggles (you already specified)
 show_downloads: false
 show_repo: false
 
-gems:
-- jekyll-sitemap
+# Markdown & syntax highlighting
+markdown: kramdown
+kramdown:
+  input: GFM
+highlighter: rouge
+# rouge supports many lexers useful for "hacking" snippets
 
+
+# Defaults (use post layout for blog posts)
+defaults:
+  - scope:
+      path: ""
+      type: "posts"
+    values:
+      layout: "post"
+      author: "C0MM4ND_N0T_F0UND"
+
+# Exclude from site build
+exclude:
+  - README.md
+  - node_modules
+  - vendor
+
+
+# Feed & SEO (optional plugins — commented out since you didn't whitelist them)
+# To enable these, add the plugin to gems/plugins and whitelist if needed.
+plugins:
+  - jekyll-feed
+  - jekyll-seo-tag
+  - jekyll-sitemap
 whitelist:
-- jekyll-sitemap
+  - jekyll-feed
+  - jekyll-seo-tag
+  - jekyll-sitemap
+
+
+# Social / author details (used by some layouts or custom includes)
+author:
+  name: "C0MM4ND_N0T_F0UND"
+  email: "commandnotfound6@gmail.com"
+  bio: "Security tinkerer — posts on pentesting, tooling, and unusual bugs."
+
+social:
+  twitter: "https://twitter.com/respectgracema"
+  github: "https://github.com/cy3erdr4g0n"
+  linkedin: "https://linkedin.com/in/akintola-john-1801a0238"
+  mastodon: ""           # optional
+
+# Build settings
+safe: false
+incremental: false
+
+
