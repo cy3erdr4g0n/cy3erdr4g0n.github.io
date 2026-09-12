@@ -29,10 +29,7 @@ The objective is to analyze the application's data management architecture, iden
 
 ## 2. Reconnaissance & Static Analysis (JADX)
 
-We begin by decompiling the target APK using **JADX-GUI** to understand the application structure and components.
-
-![Secure Notes Application UI](/assets/images/secure-note/app_interface.png)
-_Figure 1: Secure Notes application prompting for PIN authentication._
+We begin by decompiling the target APK using **JADX-GUI** to inspect the application structure, declared components, and assets.
 
 ### Auditing AndroidManifest.xml
 In Android, **Content Providers** manage access to structured datasets (such as SQLite databases or configuration files) and facilitate inter-process data sharing.
@@ -41,16 +38,13 @@ Looking at `AndroidManifest.xml`, we look for declared `<provider>` elements:
 
 ```xml
 <provider
-    android:name="com.mobilehackinglab.securenotes.NotesContentProvider"
-    android:authorities="com.mobilehackinglab.securenotes.notesprovider"
+    android:name="com.mobilehackinglab.securenotes.SecretDataProvider"
+    android:authorities="com.mobilehackinglab.securenotes.secretprovider"
     android:exported="true" />
 ```
 
-![Exported Content Provider in Manifest](/assets/images/secure-note/manifest_exported_provider.png)
-_Figure 2: Identifying the exported Content Provider in AndroidManifest.xml._
-
 > **Security Finding: Missing Access Control**:
-> The `NotesContentProvider` is declared with `android:exported="true"` and **does not declare any custom `android:readPermission` or `android:writePermission`**. This misconfiguration allows any third-party app installed on the device (or ADB) to query and extract data from the provider without requiring user interaction or elevated privileges.
+> The `SecretDataProvider` is declared with `android:exported="true"` and **does not declare any custom permissions (`android:readPermission` / `android:writePermission`)**. This misconfiguration allows any third-party app installed on the device (or ADB) to query and extract data from the provider without requiring elevated privileges.
 {: .prompt-danger }
 
 ---
@@ -60,58 +54,81 @@ _Figure 2: Identifying the exported Content Provider in AndroidManifest.xml._
 We can interact directly with the exported provider using Android's `content` command via ADB:
 
 ```bash
-# Query the exported Content Provider
-adb shell content query --uri content://com.mobilehackinglab.securenotes.notesprovider/notes
+# Query the exported SecretDataProvider
+adb shell content query --uri content://com.mobilehackinglab.securenotes.secretprovider/
 ```
 
-Alternatively, any rogue Android app could query the provider using `ContentResolver`:
+Alternatively, any rogue Android application can access the data programmatically using `ContentResolver`:
 
 ```java
-Uri uri = Uri.parse("content://com.mobilehackinglab.securenotes.notesprovider/notes");
+Uri uri = Uri.parse("content://com.mobilehackinglab.securenotes.secretprovider/");
 Cursor cursor = getContentResolver().query(uri, null, null, null, null);
 ```
 
 ---
 
-## 4. Cryptographic Implementation Analysis
+## 4. Cryptographic Implementation Analysis (JADX Inspection)
 
-Inspecting the decompiled source code in JADX reveals how the app stores and decrypts the sensitive notes.
+Navigating to `com.mobilehackinglab.securenotes.SecretDataProvider` in JADX-GUI reveals how the content provider loads and decrypts the secret.
 
-![JADX Code Review](/assets/images/secure-note/jadx_code.png)
-_Figure 3: JADX decompilation showing PBKDF2 key derivation and AES cipher initialization._
+![JADX SecretDataProvider Code](/assets/images/secure-note/jadx_secretdataprovider.png)
+_Figure 2: Decompiled SecretDataProvider showing config.properties parsing and crypto initialization._
 
-Under the application's `assets/` directory (or retrieved via the content provider), we locate `config.properties`:
+### Examining `assets/config.properties`
+Inside the decompiled APK resources under `assets/config.properties`, we find the stored cryptographic configuration:
 
-![Configuration Properties](/assets/images/secure-note/config_properties.png)
-_Figure 4: Extracted config.properties containing Base64 encoded cipher parameters._
-
-The configuration provides three Base64 encoded artifacts:
+![JADX config.properties View](/assets/images/secure-note/jadx_config_properties.png)
+_Figure 3: Configuration properties containing the Base64-encoded encrypted secret, salt, IV, and iteration count._
 
 ```properties
-encrypted = bTjBHijMAVQX+CoyFbDPJXRUSHcTyzGaie3OgVqvK5w=
-salt = m2UvPXkvte7fygEeMr0WUg==
-iv = L15Je6YfY5owgIckR9R3DQ==
+encryptedSecret=bTjBHijMAVQX+CoyFbDPJXRUSHcTyzGaie3OgVqvK5w=
+salt=m2UvPXkvte7fygEeMr0WUg==
+iv=L15Je6YfY5owgIckR9R3DQ==
+iterationCount=10000
 ```
 
-### Analyzing the Decryption Logic
-In the decompiled Java code:
+### Decompiled Cryptographic Routine
+In `SecretDataProvider.kt` (decompiled to Java by JADX):
 
-1. **PIN Formatting**: The user input PIN is strictly parsed as a 4-digit zero-padded string:
-   ```java
-   String passwordStr = String.format("%04d", pin);
-   ```
-2. **Key Derivation**: The app derives a 256-bit AES key using `PBKDF2WithHmacSHA1` with `10,000` iterations:
-   ```java
-   PBEKeySpec spec = new PBEKeySpec(passwordStr.toCharArray(), salt, 10000, 256);
-   SecretKeyFactory factory = SecretKeyFactory.getInstance("PBKDF2WithHmacSHA1");
-   byte[] key = factory.generateSecret(spec).getEncoded();
-   ```
-3. **Decryption**: The ciphertext is decrypted using `AES/CBC/PKCS5Padding` with the extracted IV:
-   ```java
-   Cipher cipher = Cipher.getInstance("AES/CBC/PKCS5Padding");
-   cipher.init(Cipher.DECRYPT_MODE, new SecretKeySpec(key, "AES"), new IvParameterSpec(iv));
-   byte[] decrypted = cipher.doFinal(encrypted);
-   ```
+```java
+public final class SecretDataProvider extends ContentProvider {
+    private byte[] encryptedSecret;
+    private int iterationCount;
+    private byte[] iv;
+    private byte[] salt;
+
+    @Override // android.content.ContentProvider
+    public boolean onCreate() throws IOException {
+        AssetManager assets;
+        InputStream inputStreamOpen;
+        Properties properties = new Properties();
+        Context context = getContext();
+        if (context != null && (assets = context.getAssets()) != null && (inputStreamOpen = assets.open("config.properties")) != null) {
+            try {
+                InputStream it = inputStreamOpen;
+                properties.load(it);
+                byte[] bArrDecode = Base64.decode(properties.getProperty("encryptedSecret"), 0);
+                this.encryptedSecret = bArrDecode;
+                byte[] bArrDecode2 = Base64.decode(properties.getProperty("salt"), 0);
+                this.salt = bArrDecode2;
+                byte[] bArrDecode3 = Base64.decode(properties.getProperty("iv"), 0);
+                this.iv = bArrDecode3;
+                String property = properties.getProperty("iterationCount");
+                this.iterationCount = Integer.parseInt(property);
+                Unit unit = Unit.INSTANCE;
+                ...
+```
+
+Tracing `generateKeyFromPin(String)` and `decryptSecret(String)`:
+1. **Key Derivation (`PBKDF2WithHmacSHA1`)**:
+   - Iterations: `10000`
+   - Key Length: `256 bits` (`32 bytes`)
+   - Salt: Base64-decoded `m2UvPXkvte7fygEeMr0WUg==`
+   - Password: 4-digit PIN formatted as a 4-digit string (`0000` to `9999`).
+2. **Cipher (`AES/CBC/PKCS5Padding`)**:
+   - Algorithm: `AES` in `CBC` mode with `PKCS5Padding`
+   - Initialization Vector (IV): Base64-decoded `L15Je6YfY5owgIckR9R3DQ==`
+   - Ciphertext: Base64-decoded `bTjBHijMAVQX+CoyFbDPJXRUSHcTyzGaie3OgVqvK5w=`
 
 ---
 
@@ -229,22 +246,16 @@ $ python3 solve.py
 [*] Tested 2000
 
 [+] Possible PIN found!
-[+] PIN:    2580
-[+] Secret: CTF{D1d_y0u_gu3ss_1t!1?}
+[+] PIN:    ****
+[+] Secret: CTF{**************?}
 ```
 
-![Solver Output](/assets/images/secure-note/script_output.png)
-_Figure 5: Script successfully cracks PIN 2580 and reveals the plaintext flag._
+The script finds the valid PIN: **`2580`** (which forms a straight vertical line down the center of the keypad: `2 -> 5 -> 8 -> 0`).
 
-The script finds the valid PIN: **`2580`** (which corresponds to a vertical straight line down the center of an Android dialpad: `2 -> 5 -> 8 -> 0`).
-
-Entering `2580` into the Android application unlocks the note and displays the flag:
-
-![Secret Note Decrypted](/assets/images/secure-note/flag_captured.png)
-_Figure 6: Entering the recovered PIN into the mobile app unlocks the note._
+Entering `2580` into the Android application unlocks the note and displays the decrypted flag:
 
 ```text
-Flag: CTF{D1d_y0u_gu3ss_1t!1?}
+Flag: CTF{*********}
 ```
 
 ---
