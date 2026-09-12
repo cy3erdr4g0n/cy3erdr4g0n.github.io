@@ -246,16 +246,19 @@ $ python3 solve.py
 [*] Tested 2000
 
 [+] Possible PIN found!
-[+] PIN:    ****
-[+] Secret: CTF{**************?}
+[+] PIN:    2580
+[+] Secret: CTF{D1d_y0u_gu3ss_1t!1?}
 ```
+
+![Python Script Execution](/assets/images/secure-note/python_execution.png)
+_Figure 4: Terminal output of the Python solver successfully cracking PIN 2580 and revealing the flag._
 
 The script finds the valid PIN: **`2580`** (which forms a straight vertical line down the center of the keypad: `2 -> 5 -> 8 -> 0`).
 
 Entering `2580` into the Android application unlocks the note and displays the decrypted flag:
 
 ```text
-Flag: CTF{*********}
+Flag: CTF{D1d_y0u_gu3ss_1t!1?}
 ```
 
 ---
