@@ -13,8 +13,7 @@ What is the first ingredient that Rick needs?
 ### Nmap Results
 
 ```bash
-┌──(kali㉿kali)-[~]
-└─$  nmap -A 10.10.54.104       
+~$ >> nmap -A 10.10.54.104       
 Starting Nmap 7.94SVN ( https://nmap.org ) at 2024-01-27 08:46 EST
 Nmap scan report for 10.10.54.104
 Host is up (0.29s latency).
@@ -54,8 +53,7 @@ Then i decided to brute-force for directories using gobuster and i also added so
 ### Gobuster result
 
 ```bash
-┌──(kali㉿kali)-[/usr/share/wordlists/dirbuster]
-└─$ gobuster dir -u http://10.10.54.104 -w directory-list-2.3-medium.txt -x txt,html,css,cgi,php
+~$ >> gobuster dir -u http://10.10.54.104 -w directory-list-2.3-medium.txt -x txt,html,css,cgi,php
 ===============================================================
 Gobuster v3.6
 by OJ Reeves (@TheColonial) & Christian Mehlmauer (@firefart)

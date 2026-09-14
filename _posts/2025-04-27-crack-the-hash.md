@@ -3,9 +3,11 @@ title: "TryHackMe - Crack The Hash"
 date: 2025-04-27 12:00:00 +0000
 categories: ["CTF", "TryHackMe"]
 tags: ["hash-cracking", "john", "hashcat", "cryptography"]
+image:
+  path: /assets/images/crack-the-hash/banner.png
 ---
 
-![](https://i.imgur.com/CBJU8BB.png)
+![](/assets/images/crack-the-hash/banner.png)
 
 ```bash
 hashid 48bb6e862e54f2a795ffc4e541caed4d
@@ -14,10 +16,10 @@ md5
 ```
 
 ```bash
-❯ john --format=raw-md5 --wordlist=/usr/share/wordlists/rockyou.txt hashes.txt
+~$ >> john --format=raw-md5 --wordlist=/usr/share/wordlists/rockyou.txt hashes.txt
 ```
 
-![](https://i.imgur.com/NlVafHN.png)
+![](/assets/images/crack-the-hash/01_john_md5.png)
 
 
 
@@ -28,24 +30,24 @@ sha-1
 ```
 
 ```bash
-❯ john --format=raw-sha1 --wordlist=/usr/share/wordlists/rockyou.txt hashes.txt
+~$ >> john --format=raw-sha1 --wordlist=/usr/share/wordlists/rockyou.txt hashes.txt
 ```
 
-![](https://i.imgur.com/Qg6wgsY.png)
+![](/assets/images/crack-the-hash/02_john_sha1.png)
 
 
 
 ```bash
-❯ hashid 1C8BFE8F801D79745C4631D09FFF36C82AA37FC4CCE4FC946683D7B336B63032
+~$ >> hashid 1C8BFE8F801D79745C4631D09FFF36C82AA37FC4CCE4FC946683D7B336B63032
 
 sha-256
 ```
 
 ```bash
-❯ john --format=raw-sha256 --wordlist=/usr/share/wordlists/rockyou.txt hashes.txt
+~$ >> john --format=raw-sha256 --wordlist=/usr/share/wordlists/rockyou.txt hashes.txt
 ```
 
-![](https://i.imgur.com/Nb1feD6.png)
+![](/assets/images/crack-the-hash/03_john_sha256.png)
 
 
 
@@ -64,7 +66,7 @@ The hash `$2y$12$Dwt1BZj6pcyc3Dy1FWZ5ieeUznr71EeNkJkUlypTsgbX1H68wsRom` is a bcr
 - making a copy of the wordlist but with only 4 characters long words
 
 ```bash
-❯ grep -E '^.{4}$' /usr/share/wordlists/rockyou.txt > four_char_words.txt 
+~$ >> grep -E '^.{4}$' /usr/share/wordlists/rockyou.txt > four_char_words.txt 
 ```
 
 ### Explanation
@@ -78,20 +80,20 @@ The hash `$2y$12$Dwt1BZj6pcyc3Dy1FWZ5ieeUznr71EeNkJkUlypTsgbX1H68wsRom` is a bcr
 - `> four_char_words.txt`: Redirects the output to a new file named `four_char_words.txt`.
 
 ```bash
-❯ hashcat -m 3200 -a 0 hashes.txt four_char_words.txt 
+~$ >> hashcat -m 3200 -a 0 hashes.txt four_char_words.txt 
 ```
 
-![](https://i.imgur.com/X5UCiSO.png)
+![](/assets/images/crack-the-hash/04_hashcat_bcrypt.png)
 
 ```bash
-❯ hashid 279412f945939ba78ce0758d3fd83daa
+~$ >> hashid 279412f945939ba78ce0758d3fd83daa
 
 md4
 ```
 
 [online-cracker](https://hashes.com/en/decrypt/hash )
 
-![](https://i.imgur.com/TRjwcEo.png)
+![](/assets/images/crack-the-hash/05_hashes_md4.png)
 
 ## Level 2
 
@@ -99,14 +101,14 @@ md4
 F09EDCB1FCEFC6DFB23DC3505A882655FF77375ED8AA2D1C13F640FCCC2D0C85
 ```
 
-![](https://i.imgur.com/6pjgyMK.png)
+![](/assets/images/crack-the-hash/06_hashes_level2_hash1.png)
 
 
 ```
 1DFECA0C002AE40B8619ECF94819CC1B
 ```
 
-![](https://i.imgur.com/DflJ4It.png)
+![](/assets/images/crack-the-hash/07_hashes_level2_hash2.png)
 
 
 ```
@@ -117,16 +119,16 @@ Salt: aReallyHardSalt
 
 the hash you provided is indeed salted. The salt is `aReallyHardSalt`. Both John the Ripper and Hashcat are capable of handling salted hashes.
 
-![](https://i.imgur.com/chJOPAx.png)
+![](/assets/images/crack-the-hash/08_thm_six_char_hint.png)
 
 - making a copy of the wordlist but with only `six` characters words
 
 ```bash
-❯ grep -E '^.{6}$' /usr/share/wordlists/rockyou.txt > six_char_words.txt 
+~$ >> grep -E '^.{6}$' /usr/share/wordlists/rockyou.txt > six_char_words.txt 
 ```
 
 ```bash
-❯ hashcat -m 1800 -a 0 hashes.txt six_char_words.txt
+~$ >> hashcat -m 1800 -a 0 hashes.txt six_char_words.txt
 ```
 
 ### Explanation of Hashcat Command
@@ -136,7 +138,7 @@ the hash you provided is indeed salted. The salt is `aReallyHardSalt`. Both John
 - `-a 0`: Specifies the attack mode (0 for a dictionary attack).
 - this attack may take some time
 
-![](https://i.imgur.com/rJVqagr.png)
+![](/assets/images/crack-the-hash/09_hashcat_sha512.png)
 
 
 ```
@@ -145,12 +147,13 @@ Hash: e5d8870e5bdd26602cab8dbe07a942c8669e56d6
 Salt: tryhackme
 ```
 
-![](https://i.imgur.com/Sc4ndqv.png)
+![](/assets/images/crack-the-hash/10_thm_hmac_hint.png)
 
 To crack a salted HMAC-SHA1  hash using Hashcat, you need to specify the correct hash mode for salted HMAC-SHA1. The mode for salted HMAC-SHA1 in Hashcat is  `160`. Below are the steps to crack the hash `e5d8870e5bdd26602cab8dbe07a942c8669e56d6` with the salt `tryhackme`.
 
 ```bash
-❯ hashcat -m 160 e5d8870e5bdd26602cab8dbe07a942c8669e56d6:tryhackme /usr/share/wordlists/rockyou.txt
+~$ >> hashcat -m 160 e5d8870e5bdd26602cab8dbe07a942c8669e56d6:tryhackme /usr/share/wordlists/rockyou.txt
 ```
 
-![](https://i.imgur.com/VFGst4j.png)
+![](/assets/images/crack-the-hash/11_hashcat_hmac_sha1.png)
+

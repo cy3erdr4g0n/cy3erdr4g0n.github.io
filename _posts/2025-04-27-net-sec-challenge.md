@@ -3,19 +3,20 @@ title: "TryHackMe - Net Sec Challenge"
 date: 2025-04-27 12:00:00 +0000
 categories: ["CTF", "TryHackMe"]
 tags: ["linux", "networking", "nmap", "telnet", "ftp"]
+image:
+  path: /assets/images/net-sec-challenge/banner.png
 ---
 
 # Net Sec challenge
 
-![](https://i.imgur.com/2eH4ylG.png)
+![](/assets/images/net-sec-challenge/banner.png)
 
 ### Question 1
 - What is the highest port number being open less than 10,000?
 
 running an Nmap scan for `All` Ports on the IP Address i have this result:
 ```bash
-┌──(kali㉿kali)-[~]
-└─$ nmap -p- 10.10.174.60                                            
+~$ >> nmap -p- 10.10.174.60                                            
 Starting Nmap 7.94SVN ( https://nmap.org ) at 2024-02-01 07:50 EST
 Stats: 0:31:41 elapsed; 0 hosts completed (1 up), 1 undergoing Connect Scan
 Connect Scan Timing: About 87.14% done; ETC: 08:27 (0:04:40 remaining)
@@ -37,8 +38,7 @@ Nmap done: 1 IP address (1 host up) scanned in 2278.31 seconds
 
 From the last Scan result we will get the answer to this question
 ```bash
-┌──(kali㉿kali)-[~]
-└─$ nmap -p- 10.10.174.60                                            
+~$ >> nmap -p- 10.10.174.60                                            
 Starting Nmap 7.94SVN ( https://nmap.org ) at 2024-02-01 07:50 EST
 Stats: 0:31:41 elapsed; 0 hosts completed (1 up), 1 undergoing Connect Scan
 Connect Scan Timing: About 87.14% done; ETC: 08:27 (0:04:40 remaining)
@@ -74,22 +74,22 @@ Then we will need to specify the type of request we want to send `GET` or `POST`
 GET / HTTP/1.1
 ```
 After typing the above command we will need to click `ENTER` twice on our keyboard for the request to be sent to the `http web server`
-![](https://i.imgur.com/dJ5QEPo.png)
+![](/assets/images/net-sec-challenge/01_telnet_http.png)
 #### Using nmap
 to get the flag with Nmap all we nee to use is the Nmap scripting Engine, we can specify a script with the `--script "<name>"` flag with nmap or just use the default `-sC` which will also work to get the Http Hearder flag:
-![](https://i.imgur.com/GCaUQ3Q.png)
+![](/assets/images/net-sec-challenge/02_nmap_http_header.png)
 
 ### Question 5
 - What is the flag hidden in the SSH server header?
 There are also two ways to solve this task, just like the last one we can use `nmap` or `telnet`
 #### Using Telnet 
 we only need to specify the ip and port and telnet will grab the banner which contains the SSH header flag:
-![](https://i.imgur.com/ZkHU5gw.png)
+![](/assets/images/net-sec-challenge/03_telnet_ssh.png)
 
 #### Using nmap
 to use nmap we will use the exact nmap command from the last task task but change the port`-p` from 80 to 22:
 
-![](https://i.imgur.com/aq8V2nw.png)
+![](/assets/images/net-sec-challenge/04_nmap_ssh.png)
 
 
 ### Question 6
@@ -100,8 +100,7 @@ the port number is `10021` and default FTP port is `21` , so this has to be anot
 
 Enumerating more on that port i confirm that it is indeed an FTP port and i ot the service version
 ```bash
-┌──(kali㉿kali)-[~]
-└─$ nmap -p10021 10.10.174.60 -sV                                    
+~$ >> nmap -p10021 10.10.174.60 -sV                                    
 Starting Nmap 7.94SVN ( https://nmap.org ) at 2024-02-01 08:48 EST
 Nmap scan report for 10.10.174.60
 Host is up (0.33s latency).
@@ -119,22 +118,21 @@ Nmap done: 1 IP address (1 host up) scanned in 8.13 seconds
 
 we will need to brute force for the passwords of both users with `Hydra`
 - i crated a file with available usernames
-![](https://i.imgur.com/VvSnI3H.png)
+![](/assets/images/net-sec-challenge/05_create_users_txt.png)
 
 - Then i used hydra with the rockyou.txt as the password wordlist`-P` and the user name list i created as the username wordlist `-L`
 ```bash
-┌──(kali㉿kali)-[~]
-└─$ hydra -L users.txt -P /usr/share/wordlists/rockyou.txt ftp://<IP>:10021
+~$ >> hydra -L users.txt -P /usr/share/wordlists/rockyou.txt ftp://<IP>:10021
 ```
 
-![](https://i.imgur.com/QGjsbsV.png)
+![](/assets/images/net-sec-challenge/06_hydra_ftp.png)
 
 I logged in to the FTP server with `Eddie` credentials but i didn't find the flag then i logged in with `quinn` credentials and found it:
-![](https://i.imgur.com/D8a0grf.png)
+![](/assets/images/net-sec-challenge/07_ftp_flag.png)
 
 ### Question 8
 - Browsing to `http://<IP>:8080` displays a small challenge that will give you a flag once you solve it. What is the flag?
-![](https://i.imgur.com/uqly5Ir.png)
+![](/assets/images/net-sec-challenge/08_ids_challenge.png)
 - Now we need to scan as slow as we can to finish this challenge
 - we can use either the FIN scan or NULL scan here
 - Using timing template to slow down the scan
